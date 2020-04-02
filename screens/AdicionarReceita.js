@@ -79,7 +79,7 @@ export default class AdicionarReceita extends React.Component {
             </TouchableOpacity>
 
             <Text style={styles.texto}>* Nome da Receita:</Text>
-            <TextInput style={styles.input} value={this.state.nomeReceita} onChangeText={(nomeReceita) => this.setState({texto})}/>
+            <TextInput style={styles.input} value={this.state.nomeReceita} onChangeText={(nomeReceita) => this.setState({nomeReceita})}/>
 
             <Text style={styles.texto}>* Ingredientes:</Text>
             
@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: '#E91E63',
     borderRadius: 10,
-    width: '80%'
+    width: '80%',
+    textAlign: 'center',
   },
   listaIngredientes: {
     flexDirection: 'row',
