@@ -5,6 +5,7 @@ import logo from './assets/cook.png';
 
 import MenuHome from './MenuHome';
 import MenuCategoria from './MenuCategoria';
+import MenuAdicionarReceita from './MenuAdicionarReceita';
 
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -43,6 +44,7 @@ export default function App() {
       <Drawer.Navigator edgeWidth={0} initialRouteName='Home' backBehavior='initialRoute' drawerContent={DrawerComponent}>
         <Drawer.Screen name="Home" component={MenuHome} />
         <Drawer.Screen name="Categorias" component={MenuCategoria} />
+        <Drawer.Screen name="Adicionar Receita" component={MenuAdicionarReceita}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
