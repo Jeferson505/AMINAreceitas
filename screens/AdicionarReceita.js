@@ -6,6 +6,8 @@ import { Entypo } from '@expo/vector-icons';
 import * as DocumentPicker from 'expo-document-picker';
 import { TextInput } from 'react-native-gesture-handler';
 
+import imagemSelecionarReceita from '../assets/selecionarImage.png';
+
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 
@@ -15,7 +17,7 @@ export default class AdicionarReceita extends React.Component {
       super(props);
       this.state = {
           nomeImagem: '',
-          uriImagem: 'https://media.istockphoto.com/vectors/black-linear-photo-camera-like-no-image-available-vector-id1055079680',
+          uriImagem: '',
           nome: '',
           ingredientes: [''],
           modoPreparo: '',
@@ -113,7 +115,7 @@ export default class AdicionarReceita extends React.Component {
 
     firebase.database().ref("Receitas/").child(nome).set(receita)
       .then((res) => {
-        this.setState({url: '', uriImagem: 'https://media.istockphoto.com/vectors/black-linear-photo-camera-like-no-image-available-vector-id1055079680', nome: '', ingredientes: [''], modoPreparo: '', linkYoutube: '', rendimento: '', tempo_preparo: ''});
+        this.setState({url: '', uriImagem: '../assets/selecionarImage.png', nome: '', ingredientes: [''], modoPreparo: '', linkYoutube: '', rendimento: '', tempo_preparo: ''});
         ToastAndroid.show("Receita adicionada com sucesso.", ToastAndroid.SHORT);
       });
   }
@@ -125,7 +127,7 @@ export default class AdicionarReceita extends React.Component {
           <ScrollView>
 
             <TouchableOpacity onPress={() => this.selecionarImagem()}>
-                <Image source={{uri: this.state.uriImagem}} style={styles.imagemReceita}/>
+                <Image source={ this.state.nomeImagem === '' ? imagemSelecionarReceita : {uri: this.state.uriImagem}} style={styles.imagemReceita}/>
             </TouchableOpacity>
 
             <Text style={styles.texto}>* Nome da Receita:</Text>
