@@ -53,9 +53,10 @@ export default class Home extends React.Component {
       let rendimento = receita.rendimento;
       let tempo_preparo = receita.tempo_preparo;
       let imagem = receita.url;
+      let linkYoutube = receita.linkYoutube;
       return(
         <TouchableOpacity key={key} style={styles.item} onPress={() => this.props.navigation.navigate('ReceitaCompleta', {
-          nome, ingredientes, modoPreparo, rendimento, tempo_preparo, imagem
+          nome, ingredientes, modoPreparo, rendimento, tempo_preparo, imagem, linkYoutube
         })}>
           <Receita nome={nome} imagem={imagem}/>
         </TouchableOpacity>

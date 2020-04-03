@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Image, ScrollView, Text } from 'react-native';
 import { Entypo, AntDesign } from '@expo/vector-icons';
 
+import { WebView } from 'react-native-webview';
+
 export default function ReceitaCompleta(props) {
   
   const nomeReceita = props.navigation.getParam("nome");
@@ -21,6 +23,7 @@ export default function ReceitaCompleta(props) {
   const rendimento = props.navigation.getParam("rendimento");
   const tempo_preparo = props.navigation.getParam("tempo_preparo");
   const imagem = props.navigation.getParam("imagem");
+  const linkYoutube = props.navigation.getParam("linkYoutube");
 
   ReceitaCompleta.navigationOptions = {
     title: tituloReceita,
@@ -33,6 +36,24 @@ export default function ReceitaCompleta(props) {
     headerTintColor: 'white',
   }
 
+  let mostrarIngredientes = () => {
+
+    if(!Array.isArray(ingredientes)) return <Text style={styles.detalhes}>{ingredientes}</Text>;
+
+    return ingredientes.map((ingrediente, key) => {
+      return <Text key={key} style={styles.detalhes}>{ingrediente};</Text>;
+    });
+  }
+
+  const VideoYoutube = (
+    <WebView
+      style={{width: '100%', height: 300, marginBottom: 20, marginTop: 10}}
+      javaScriptEnabled={true}
+      domStorageEnabled={true}
+      source={{uri: linkYoutube }}
+      />
+  );
+
   return (
     <View style={styles.container}>
         <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/receitas-pantaneiras.appspot.com/o/"+imagem+"?alt=media&"}}
@@ -40,10 +61,13 @@ export default function ReceitaCompleta(props) {
 
         <ScrollView style={styles.infoReceita}>
             <Text style={styles.negrito}>Ingredientes:</Text>
-            <Text style={styles.detalhes}>{ingredientes}</Text>
+            {mostrarIngredientes()}
 
             <Text style={styles.negrito}>Modo de Preparo:</Text>
             <Text style={styles.detalhes}>{modoPreparo}</Text>
+
+            {linkYoutube !== undefined ? VideoYoutube : <View/> }
+    
         </ScrollView>
 
         <View style={styles.detalhesReceita}>
@@ -85,7 +109,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 20,
+    paddingBottom: 10,
     color: '#757575',
   },
   detalhesReceita: {

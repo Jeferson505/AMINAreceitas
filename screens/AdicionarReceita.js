@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, ToastAndroid, Picker, ActivityIndicator } from 'react-native';
-import { WebView } from 'react-native-webview';
 
 import { Entypo } from '@expo/vector-icons';
 
@@ -80,6 +79,7 @@ export default class AdicionarReceita extends React.Component {
     let { nomeImagem } = this.state;
     let { uriImagem } = this.state;
     let { nome } = this.state;
+    let { categoria } = this.state;
     let { ingredientes } = this.state;
     let { modoPreparo } = this.state;
     let { linkYoutube } = this.state;
@@ -98,6 +98,7 @@ export default class AdicionarReceita extends React.Component {
     let receita = {
       url,
       nome,
+      categoria,
       ingredientes,
       modoPreparo,
       linkYoutube,
@@ -122,13 +123,6 @@ export default class AdicionarReceita extends React.Component {
     return (
       <View style={styles.container}>
           <ScrollView>
-
-          <WebView
-            style={{width: '100%', height: 300}}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            source={{uri: "https://youtube.com/embed/1zmLfUzu3S8" }}
-            />
 
             <TouchableOpacity onPress={() => this.selecionarImagem()}>
                 <Image source={{uri: this.state.uriImagem}} style={styles.imagemReceita}/>
