@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 import Receita from './Receita';
 
@@ -16,8 +16,10 @@ export default class Home extends React.Component {
     super(props);
     this.state = {
       receitas: [],
+      loading: false,
     }
     this.getReceitas = this.getReceitas.bind(this);
+    this.exibirReceitas = this.exibirReceitas.bind(this);
     this.mostrarReceitasColuna = this.mostrarReceitasColuna.bind(this);
   }
 
@@ -33,7 +35,7 @@ export default class Home extends React.Component {
         snapshot.forEach((receita) => {
           receitas.push(receita.val());
         });
-        this.setState({receitas});
+        this.setState({receitas, loading: true});
       }
     );
   }
@@ -64,15 +66,21 @@ export default class Home extends React.Component {
     });
   }
 
+  exibirReceitas(){
+    return(
+      <ScrollView>
+        <View style={styles.row}>
+          <View style={styles.col}>{this.mostrarReceitasColuna(0)}</View>
+          <View style={styles.col}>{this.mostrarReceitasColuna(1)}</View>
+        </View>
+      </ScrollView>
+    );
+  }
+
   render(){
     return (
       <View style={styles.container}>
-          <ScrollView>
-            <View style={styles.row}>
-              <View style={styles.col}>{this.mostrarReceitasColuna(0)}</View>
-              <View style={styles.col}>{this.mostrarReceitasColuna(1)}</View>
-            </View>
-          </ScrollView>
+        {this.state.loading ? this.exibirReceitas() : <ActivityIndicator size="large"/>}
       </View>
     );
   }
