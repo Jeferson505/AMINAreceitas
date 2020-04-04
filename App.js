@@ -3,9 +3,9 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import logo from './assets/cook.png';
 
-import MenuHome from './MenuHome';
-import MenuCategoria from './MenuCategoria';
-import MenuAdicionarReceita from './MenuAdicionarReceita';
+import MenuHome from './menus/MenuHome';
+import MenuCategoria from './menus/MenuCategoria';
+import MenuAdicionarReceita from './menus/MenuAdicionarReceita';
 
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';

@@ -6,9 +6,9 @@ import { Entypo } from '@expo/vector-icons';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import Categorias from './screens/Categorias';
-import Categoria from './screens/Categoria';
-import ReceitaCompleta from './screens/ReceitaCompleta';
+import Categorias from '../screens/Categorias';
+import Categoria from '../screens/Categoria';
+import ReceitaCompleta from '../screens/ReceitaCompleta';
 
 const MainNavigator = createStackNavigator({
     Categorias,

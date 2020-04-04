@@ -6,8 +6,8 @@ import { Entypo } from '@expo/vector-icons';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import Home from './screens/Home';
-import ReceitaCompleta from './screens/ReceitaCompleta';
+import Home from '../screens/Home';
+import ReceitaCompleta from '../screens/ReceitaCompleta';
 
 const MainNavigator = createStackNavigator({
   Home,

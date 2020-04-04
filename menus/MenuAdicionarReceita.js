@@ -6,7 +6,7 @@ import { Entypo } from '@expo/vector-icons';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import AdicionarReceita from './screens/AdicionarReceita';
+import AdicionarReceita from '../screens/AdicionarReceita';
 
 const MainNavigator = createStackNavigator({
     AdicionarReceita,
