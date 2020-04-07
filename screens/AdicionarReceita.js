@@ -131,7 +131,7 @@ export default class AdicionarReceita extends React.Component {
             </TouchableOpacity>
 
             <Text style={styles.texto}>* Nome da Receita:</Text>
-            <TextInput style={styles.input} value={this.state.nome} onChangeText={(nome) => this.setState({nome})}/>
+            <TextInput underlineColorAndroid="black" style={styles.input} value={this.state.nome} onChangeText={(nome) => this.setState({nome})}/>
 
             <Text style={styles.texto}>* Categoria:</Text>
             <Picker
@@ -159,7 +159,7 @@ export default class AdicionarReceita extends React.Component {
             </TouchableOpacity>
 
             <Text style={styles.texto}>* Modo de Preparo:</Text>
-            <TextInput multiline textAlignVertical="top" numberOfLines={10} style={styles.input} value={this.state.modoPreparo} onChangeText={(modoPreparo) => this.setState({modoPreparo})}/>
+            <TextInput multiline textAlignVertical="top" numberOfLines={10} style={[styles.input, styles.inputModoPreparo]} value={this.state.modoPreparo} onChangeText={(modoPreparo) => this.setState({modoPreparo})}/>
 
             <Text style={styles.texto}>Link para vídeo no YouTube:</Text>
             <TextInput style={styles.input} value={this.state.linkYoutube} onChangeText={(linkYoutube) => this.setState({linkYoutube})}/>
@@ -202,17 +202,23 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   input: {
-    color: 'white',
+    color: 'black',
     padding: 5,
     marginBottom: 5,
-    backgroundColor: '#E91E63',
-    borderRadius: 10,
+    borderBottomColor: '#E91E63',
+    borderBottomWidth: 3,
+    borderRadius: 5,
+  },
+  inputModoPreparo: {
+    borderWidth: 3,
+    borderColor: '#E91E63',
   },
   inputDetalhesReceita: {
-    color: 'white',
+    color: 'black',
     padding: 5,
-    backgroundColor: '#E91E63',
-    borderRadius: 10,
+    borderRadius: 5,
+    borderBottomColor: '#E91E63',
+    borderBottomWidth: 3,
     width: '80%',
     textAlign: 'center',
   },
